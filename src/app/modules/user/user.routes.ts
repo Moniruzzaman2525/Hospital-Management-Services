@@ -8,3 +8,5 @@ import { userValidation } from './user.validation'
 const router = express.Router()
 
 router.post('/create-patient', validateRequest(userValidation.userValidationSchema), userController.createPatient)
+
+export const UserRoutes = router
