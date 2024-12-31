@@ -1,9 +1,6 @@
 import { TContactInfo } from "../../interface/contactInfo";
 import { TMedicalHistory } from "../../interface/medicalHistory";
 
-
-
-
 export type TPatient = {
     id: string;
     name: string;
@@ -12,5 +9,5 @@ export type TPatient = {
     email: string;
     image?: string;
     contactInfo: TContactInfo;
-    medicalHistory: TMedicalHistory
+    medicalHistory: TMedicalHistory,
 }
