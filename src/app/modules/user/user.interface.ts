@@ -1,7 +1,3 @@
-import { TContactInfo } from "../../interface/contactInfo";
-
-
-
 export type TUser = {
     id: string;
     role: 'doctor' | 'patient' | 'staff';
