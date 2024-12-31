@@ -4,6 +4,7 @@ import { Patient } from "../patient/patient.model";
 import { TUser } from "./user.interface";
 import { User } from "./user.model";
 import { generatePatientId } from "./user.utils";
+import AppError from "../../errors/AppError";
 
 
 
@@ -20,21 +21,30 @@ const createPatientIntoDB = async (password: string, payload: TPatient) => {
 
         userData.id = userId
 
-        const newUser = await User.create(userData)
-        
-        payload.user = newUser._id
+        const newUser = await User.create([userData], { session })
+        if (!newUser.length) {
+            await session.abortTransaction();
+            await session.endSession();
+            throw new AppError(400, 'Patient create failed')
+        }
+
+        payload.user = newUser[0]._id
         payload.id = userId
-        
-        const result = await Patient.create(payload)
-        
+
+        const result = (await Patient.create([payload], { session }))
+        if (!result.length) {
+            await session.abortTransaction();
+            await session.endSession();
+            throw new AppError(400, 'Patient create failed')
+        }
         await session.commitTransaction()
         await session.endSession()
         return result
-    } catch (error) {
-        console.log(error);
+    } catch (error: any) {
         await session.abortTransaction()
         await session.endSession()
-        
+        throw new Error(error)
+
     }
 
 }

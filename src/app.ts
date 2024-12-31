@@ -3,6 +3,7 @@
 import express, { Application } from 'express'
 import cors from 'cors'
 import router from './app/routes'
+import globalErrorHandler from './app/middleware/globalErrorhandler'
 
 const app: Application = express()
 const port = 5000
@@ -14,5 +15,6 @@ app.get('/',(req,res) => {
 })
 
 app.use("/api/v1",router)
+app.use(globalErrorHandler)
 
 export default app
