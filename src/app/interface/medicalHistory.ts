@@ -1,4 +1,5 @@
 import { Schema } from "mongoose";
+import { z } from "zod";
 
 export type TMedicalHistory = {
     condition: string;
@@ -6,6 +7,11 @@ export type TMedicalHistory = {
     date: Date
 }
 
+export const medicalHistoryValidation  = z.object({
+    condition: z.string(),
+    notes: z.string().optional(),
+    date: z.string()
+})
 
 export const medicalHistorySchema = new Schema<TMedicalHistory>({
     condition: {
