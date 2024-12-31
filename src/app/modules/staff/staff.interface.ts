@@ -8,5 +8,5 @@ export type TStaff = {
     salary: string;
     email:string;
     contactInfo: TContactInfo;
-    image: string
+    image?: string
 }

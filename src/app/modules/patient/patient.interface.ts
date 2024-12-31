@@ -1,18 +1,16 @@
 import { TContactInfo } from "../../interface/contactInfo";
+import { TMedicalHistory } from "../../interface/medicalHistory";
 
 
-export type TMedicalHistory = {
-    condition: string;
-    notes: string;
-    date: Date
-}
+
 
 export type TPatient = {
+    id: string;
     name: string;
     age: string;
     gender: string;
     email: string;
-    image: string;
+    image?: string;
     contactInfo: TContactInfo;
     medicalHistory: TMedicalHistory
 }
