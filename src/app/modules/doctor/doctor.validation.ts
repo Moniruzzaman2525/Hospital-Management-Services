@@ -26,3 +26,19 @@ export const createDoctorValidationSchema = z.object({
         })
     })
 })
+export const updateDoctorValidationSchema = z.object({
+    body: z.object({
+        doctor: z.object({
+            id: z.string().optional(),
+            name: z.string().optional(),
+            email: z.string().optional(),
+            image: z.string().optional(),
+            dateOfBirth: z.string().optional(),
+            gender: z.enum(['Male', 'Female']).optional(),
+            specialization: z.string().optional(),
+            contactInfo: contactInfoValidation.optional(),
+            availability: doctorAvailability.optional(),
+            bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']).optional()
+        })
+    })
+})
