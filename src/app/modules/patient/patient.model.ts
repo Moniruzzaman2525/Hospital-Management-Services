@@ -35,12 +35,17 @@ const patientSchema = new Schema<TPatient>({
     image: {
         type: String,
     },
-    age: {
+    dateOfBirth: {
         type: String,
         required: true,
     },
     contactInfo: contactInfoSchema,
     medicalHistory: medicalHistorySchema,
+    gender: {
+        type: String,
+        enum: ['Male', 'Female'],
+        required: [true, 'Gender is required'],
+    }
 })
 
 

@@ -14,6 +14,21 @@ const createPatient = catchAsync(async (req, res) => {
     })
 })
 
+
+const createDoctor = catchAsync(async(req, res) => {
+    const {password, doctor: doctorData} = req.body
+
+    const result = await userServices.createDoctorIntoDB(password, doctorData)
+    sendResponse(res, {
+        statusCode: 201,
+        success: true,
+        message: 'Doctor create successfully',
+        data: result[0]
+    })
+})
+
+
 export const userController = {
-    createPatient
+    createPatient,
+    createDoctor
 }

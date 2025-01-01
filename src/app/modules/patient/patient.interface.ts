@@ -6,8 +6,8 @@ export type TPatient = {
     id: string;
     name: string;
     user: Types.ObjectId;
-    age: string;
-    gender: string;
+    dateOfBirth: string;
+    gender: 'Male' | 'Female';
     email: string;
     image?: string;
     contactInfo: TContactInfo;
