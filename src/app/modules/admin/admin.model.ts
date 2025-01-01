@@ -1,9 +1,9 @@
 import { model, Schema } from "mongoose";
-import { TDoctor } from "./doctor.interface";
 import { contactInfoSchema } from "../../interface/contactInfo";
+import { TAdmin } from "./admin.interface";
 
 
-const doctorSchema = new Schema<TDoctor>({
+const adminSchema = new Schema<TAdmin>({
     id: {
         type: String,
         unique: true,
@@ -24,10 +24,7 @@ const doctorSchema = new Schema<TDoctor>({
         required: [true, 'Email is required'],
         unique: true
     },
-    specialization: {
-        type: String,
-        required: [true, 'Specialization is required'],
-    },
+   
     image: {
         type: String,
     },
@@ -39,22 +36,6 @@ const doctorSchema = new Schema<TDoctor>({
             message: '{VALUE} is not a valid blood group',
         },
     },
-    availability: {
-        days: {
-            type: String,
-            required: [true, 'days is required'],
-        },
-        timeSlot: {
-            start: {
-                type: String,
-                required: true
-            },
-            end: {
-                type: String,
-                require: true
-            }
-        }
-    },
     gender: {
         type: String,
         enum: ['Male', 'Female'],
@@ -63,4 +44,4 @@ const doctorSchema = new Schema<TDoctor>({
 })
 
 
-export const Doctor = model<TDoctor>('Doctor', doctorSchema)
+export const Admin = model<TAdmin>('Admin', adminSchema)
