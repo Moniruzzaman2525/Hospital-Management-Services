@@ -9,6 +9,12 @@ const staffSchema = new Schema<TStaff>({
         unique: true,
         required: [true, "Id is required"]
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        required: [true, 'User id is required'],
+        unique: true,
+        ref: 'User',
+    },
     name: {
         type: String,
         required: [true, 'Name is required']

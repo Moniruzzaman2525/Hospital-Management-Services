@@ -3,12 +3,13 @@ import { TPatient } from "../patient/patient.interface";
 import { Patient } from "../patient/patient.model";
 import { TUser } from "./user.interface";
 import { User } from "./user.model";
-import { generateAdminId, generateDoctorId, generatePatientId } from "./user.utils";
+import { generateAdminId, generateDoctorId, generatePatientId, generateStaffId } from "./user.utils";
 import AppError from "../../errors/AppError";
 import { TDoctor } from "../doctor/doctor.interface";
 import { Doctor } from "../doctor/doctor.model";
 import { TAdmin } from "../admin/admin.interface";
 import { Admin } from "../admin/admin.model";
+import { Staff } from "../staff/staff.model";
 
 const createPatientIntoDB = async (password: string, payload: TPatient) => {
     const userData: Partial<TUser> = {}
@@ -131,8 +132,49 @@ const createAdminIntoDB = async (password: string, payload: TAdmin) => {
     }
 
 }
+const createStaffIntoDB = async (password: string, payload: TAdmin) => {
+    const userData: Partial<TUser> = {}
+    userData.password = password
+    userData.role = 'staff'
+    
+    userData.email = payload.email
+    const session = await mongoose.startSession()
+    try {
+        session.startTransaction()
+
+        const userId = await generateStaffId()
+
+        userData.id = userId
+
+        const newUser = await User.create([userData], { session })
+        if (!newUser.length) {
+            await session.abortTransaction();
+            await session.endSession();
+            throw new AppError(400, 'Staff create failed')
+        }
+
+        payload.user = newUser[0]._id
+        payload.id = userId
+
+        const result = (await Staff.create([payload], { session }))
+        if (!result.length) {
+            await session.abortTransaction();
+            await session.endSession();
+            throw new AppError(400, 'Staff create failed')
+        }
+        await session.commitTransaction()
+        await session.endSession()
+        return result
+    } catch (error: any) {
+        await session.abortTransaction()
+        await session.endSession()
+        throw new Error(error)
+
+    }
+
+}
 
 
 export const userServices = {
-    createPatientIntoDB, createDoctorIntoDB, createAdminIntoDB
+    createPatientIntoDB, createDoctorIntoDB, createAdminIntoDB , createStaffIntoDB
 }

@@ -13,8 +13,6 @@ const createPatient = catchAsync(async (req, res) => {
         data: result[0]
     })
 })
-
-
 const createDoctor = catchAsync(async(req, res) => {
     const {password, doctor: doctorData} = req.body
 
@@ -37,10 +35,22 @@ const createAdmin = catchAsync(async(req, res) => {
         data: result[0]
     })
 })
+const createStaff = catchAsync(async(req, res) => {
+    const {password, staff: staffData} = req.body
+
+    const result = await userServices.createStaffIntoDB(password, staffData)
+    sendResponse(res, {
+        statusCode: 201,
+        success: true,
+        message: 'Staff create successfully',
+        data: result[0]
+    })
+})
 
 
 export const userController = {
     createPatient,
     createDoctor,
-    createAdmin
+    createAdmin,
+    createStaff
 }

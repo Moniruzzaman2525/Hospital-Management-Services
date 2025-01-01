@@ -8,8 +8,8 @@ export type TContactInfo = {
 }
 
 export const contactInfoValidation  = z.object( {
-    phone: z.string(),
-    address: z.string()
+    phone: z.string().optional(),
+    address: z.string().optional()
 })
 
 export const contactInfoSchema = new Schema<TContactInfo>({
