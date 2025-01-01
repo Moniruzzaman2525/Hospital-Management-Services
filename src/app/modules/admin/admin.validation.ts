@@ -18,3 +18,17 @@ export const createAdminValidationSchema = z.object({
         })
     })
 })
+export const updateAdminValidationSchema = z.object({
+    body: z.object({
+        admin: z.object({
+            id: z.string().optional(),
+            name: z.string().optional(),
+            email: z.string().optional(),
+            image: z.string().optional(),
+            dateOfBirth: z.string().optional(),
+            gender: z.enum(['Male', 'Female']).optional(),
+            contactInfo: contactInfoValidation.optional(),
+            bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']).optional()
+        })
+    })
+})

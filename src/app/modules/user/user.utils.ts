@@ -99,7 +99,7 @@ export const generateStaffId = async () => {
 export const findAdminId = async () => {
     const lastAdmin = await User.findOne(
         {
-            role: 'staff',
+            role: 'admin',
         },
         {
             id: 1,
@@ -116,7 +116,7 @@ export const findAdminId = async () => {
 
 export const generateAdminId = async () => {
     let currentId = (0).toString();
-    const lastAdminId = await findDoctorId();
+    const lastAdminId = await findAdminId();
 
     if (lastAdminId) {
         currentId = lastAdminId.substring(2);
