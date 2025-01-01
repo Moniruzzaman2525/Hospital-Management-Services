@@ -20,3 +20,18 @@ export const createPatientValidationSchema = z.object({
         })
     })
 })
+export const updatePatientValidationSchema = z.object({
+    body: z.object({
+        patient: z.object({
+            id: z.string().optional(),
+            name: z.string().optional(),
+            dateOfBirth: z.string().optional(),
+            gender: z.string().optional(),
+            email: z.string().optional(),
+            image: z.string().optional(),
+            contactInfo: contactInfoValidation.optional(),
+            medicalHistory: medicalHistoryValidation.optional(),
+            bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']).optional()
+        })
+    })
+})
