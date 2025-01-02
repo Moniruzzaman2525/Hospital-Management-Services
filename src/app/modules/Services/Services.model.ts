@@ -1,9 +1,9 @@
 import { Schema, model } from "mongoose";
-import { THospitalServices } from "./Services.interface";
+import { TServices } from "./Services.interface";
 
 
 
-const hospitalServicesSchema = new Schema<THospitalServices>({
+export const servicesSchema = new Schema<TServices>({
     serviceName: {
         type: String,
         required: [true, 'Name is required']
@@ -21,4 +21,3 @@ const hospitalServicesSchema = new Schema<THospitalServices>({
     }
 })
 
-export const hospitalServices = model<THospitalServices>("HospitalServices", hospitalServicesSchema)

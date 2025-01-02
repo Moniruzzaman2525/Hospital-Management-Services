@@ -3,7 +3,7 @@ import { TAppointment } from "./appointment.interface";
 
 
 
-const appointmentSchema = new Schema<TAppointment>({
+export const appointmentSchema = new Schema<TAppointment>({
     date: {
         type: Date,
         required: [true, "Appointment date is required"],
@@ -27,4 +27,3 @@ const appointmentSchema = new Schema<TAppointment>({
 })
 
 
-export const Appointment = model<TAppointment>("Appointment", appointmentSchema)

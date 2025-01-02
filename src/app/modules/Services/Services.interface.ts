@@ -1,6 +1,6 @@
 
 
-export type THospitalServices = {
+export type TServices = {
     serviceName: string;
     servicesData: Date;
     serviceCost: number;

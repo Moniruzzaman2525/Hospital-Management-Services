@@ -2,6 +2,8 @@ import { model, Schema } from "mongoose";
 import { TPatient } from "./patient.interface";
 import { contactInfoSchema } from "../../interface/contactInfo";
 import { medicalHistorySchema } from "../../interface/medicalHistory";
+import { appointmentSchema } from "../appointment/appointment.model";
+import { servicesSchema } from "../Services/Services.model";
 
 
 const patientSchema = new Schema<TPatient>({
@@ -15,7 +17,7 @@ const patientSchema = new Schema<TPatient>({
         required: [true, 'User id is required'],
         unique: true,
         ref: 'User',
-      },
+    },
     name: {
         type: String,
         required: [true, 'Name is required']
@@ -45,7 +47,9 @@ const patientSchema = new Schema<TPatient>({
         type: String,
         enum: ['Male', 'Female'],
         required: [true, 'Gender is required'],
-    }
+    },
+    appointments: [appointmentSchema],
+    hospitalServices: [servicesSchema],
 })
 
 
