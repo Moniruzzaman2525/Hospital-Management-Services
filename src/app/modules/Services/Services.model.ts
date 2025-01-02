@@ -1,22 +1,22 @@
 import { Schema, model } from "mongoose";
-import { THospitalServices } from "./hospitalServices.interface";
+import { THospitalServices } from "./Services.interface";
 
 
 
 const hospitalServicesSchema = new Schema<THospitalServices>({
-    name: {
+    serviceName: {
         type: String,
         required: [true, 'Name is required']
     },
-    image: {
-        type: String,
+    servicesData: {
+        type: Date,
+        required: [true, "Service date is required"],
     },
     description: {
         type: String,
-        required: [true, 'Description is required'],
     },
-    cost: {
-        type: String,
+    serviceCost: {
+        type: Number,
         required: [true, 'Cost is required']
     }
 })
