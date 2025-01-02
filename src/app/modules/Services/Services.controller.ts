@@ -20,7 +20,7 @@ const getServicesController = catchAsync(async(req, res) => {
     sendResponse(res, {
         statusCode: 201,
         success: true,
-        message: 'Services create successfully',
+        message: 'Services retrieve successfully',
         data: result
     })
 })
@@ -30,7 +30,7 @@ const getSingleServicesController = catchAsync(async(req, res) => {
     sendResponse(res, {
         statusCode: 201,
         success: true,
-        message: 'Services create successfully',
+        message: 'Services retrieve successfully',
         data: result
     })
 })
