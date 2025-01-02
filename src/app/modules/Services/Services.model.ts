@@ -7,9 +7,9 @@ const hospitalServicesSchema = new Schema<THospitalServices>({
         required: [true, 'Id is required'],
         unique: true
     },
-    name: {
+    servicesName: {
         type: String,
-        required: [true, 'Name is required']
+        required: [true, 'Services Name is required']
     },
     image: {
         type: String,

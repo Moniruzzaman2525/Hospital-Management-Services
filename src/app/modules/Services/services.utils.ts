@@ -7,7 +7,6 @@ export const findServicesId = async () => {
             createdAt: -1,
         })
         .lean();
-    console.log(lastAdmin);
 
     return lastAdmin?.id ? lastAdmin.id.substring(2) : undefined;
 };

@@ -8,12 +8,9 @@ const createServicesIntoDB = async (payload: THospitalServices) => {
     const session = await mongoose.startSession()
     try {
         session.startTransaction()
-        const id = await generateServicesId()
-        console.log(id);
-
-        
-
-       const result = await hospitalServices.create(payload)
+        const servicesId = await generateServicesId()
+        payload.id = servicesId
+        const result = await hospitalServices.create(payload)
         await session.commitTransaction()
         await session.endSession()
         return result
@@ -21,12 +18,10 @@ const createServicesIntoDB = async (payload: THospitalServices) => {
         await session.abortTransaction()
         await session.endSession()
         throw new Error(error)
-
     }
-
 }
 
- 
+
 export const services = {
     createServicesIntoDB
 }

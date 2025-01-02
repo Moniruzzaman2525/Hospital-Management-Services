@@ -10,7 +10,7 @@ const createServicesController = catchAsync(async(req, res) => {
     sendResponse(res, {
         statusCode: 201,
         success: true,
-        message: 'Staff create successfully',
+        message: 'Services create successfully',
         data: result
     })
 })

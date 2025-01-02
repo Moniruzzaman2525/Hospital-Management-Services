@@ -2,7 +2,7 @@
 
 export type THospitalServices = {
     id: string;
-    name: string;
+    servicesName: string;
     description: string;
     cost: string;
     image?: string
