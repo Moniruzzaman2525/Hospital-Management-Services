@@ -1,9 +1,11 @@
 import { Types } from "mongoose";
 
 export type TAppointment = {
-    date: Date;
+    id: string;
+    name: string;
     time: string;
+    description: string;
     cost: string;
     doctor: Types.ObjectId;
-    reason: string;
+    user: Types.ObjectId;
 }

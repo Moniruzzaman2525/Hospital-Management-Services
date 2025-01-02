@@ -3,17 +3,27 @@ import { TAppointment } from "./appointment.interface";
 
 
 
-export const appointmentSchema = new Schema<TAppointment>({
-    date: {
-        type: Date,
-        required: [true, "Appointment date is required"],
+const appointmentSchema = new Schema<TAppointment>({
+    id: {
+        type: String,
+        required: [true, 'Name is required'],
+        unique: true
     },
     time: {
         type: String,
         required: [true, "Appointment time is required"],
-    },
-    reason: {
+      },
+    name: {
         type: String,
+        required: [true, 'Name is required']
+    },
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    },
+    description: {
+        type: String,
+        required: [true, 'Description is required'],
     },
     cost: {
         type: String,
@@ -21,9 +31,9 @@ export const appointmentSchema = new Schema<TAppointment>({
     },
     doctor: {
         type: Schema.ObjectId,
-        ref: 'Doctor',
-        required: [true, "Doctor is required"],
+        ref: 'Doctor'
     }
 })
 
 
+export const Appointment = model<TAppointment>("Appointment", appointmentSchema)

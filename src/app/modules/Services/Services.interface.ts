@@ -1,8 +1,9 @@
 
 
-export type TServices = {
-    serviceName: string;
-    servicesData: Date;
-    serviceCost: number;
-    description?: string
+export type THospitalServices = {
+    id: string;
+    name: string;
+    description: string;
+    cost: string;
+    image?: string
 }
