@@ -1,8 +1,6 @@
 import { model, Schema } from "mongoose";
 import { TAppointment } from "./appointment.interface";
 
-
-
 const appointmentSchema = new Schema<TAppointment>({
     id: {
         type: String,
@@ -13,15 +11,7 @@ const appointmentSchema = new Schema<TAppointment>({
         type: String,
         required: [true, "Appointment time is required"],
       },
-    name: {
-        type: String,
-        required: [true, 'Name is required']
-    },
-    user: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    },
-    description: {
+      reason: {
         type: String,
         required: [true, 'Description is required'],
     },
@@ -32,8 +22,11 @@ const appointmentSchema = new Schema<TAppointment>({
     doctor: {
         type: Schema.ObjectId,
         ref: 'Doctor'
-    }
+    },
+    patient: {
+        type: Schema.ObjectId,
+        ref: 'Patient'
+    },
 })
-
 
 export const Appointment = model<TAppointment>("Appointment", appointmentSchema)

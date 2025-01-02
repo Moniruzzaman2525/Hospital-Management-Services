@@ -1,8 +1,6 @@
 import { Schema, model } from "mongoose";
 import { THospitalServices } from "./Services.interface";
 
-
-
 const hospitalServicesSchema = new Schema<THospitalServices>({
     id: {
         type: String,
