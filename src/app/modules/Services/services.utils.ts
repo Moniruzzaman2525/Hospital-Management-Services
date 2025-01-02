@@ -1,4 +1,4 @@
-import { hospitalServices } from "./Services.model";
+import { hospitalServices } from "./services.model";
 
 
 export const findServicesId = async () => {

@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
-import { THospitalServices } from "./Services.interface"
-import { hospitalServices } from "./Services.model"
 import { generateServicesId } from "./services.utils"
+import { THospitalServices } from "./Services.interface"
+import { hospitalServices } from "./services.model"
 
 
 const createServicesIntoDB = async (payload: THospitalServices) => {
