@@ -3,7 +3,7 @@ import sendResponse from "../../utils/sendResponse"
 import { services } from "./Services.services"
 
 
-const createStaff = catchAsync(async(req, res) => {
+const createServicesController = catchAsync(async(req, res) => {
     const {services: servicesData} = req.body
 
     const result = await services.createServicesIntoDB(servicesData)
@@ -14,3 +14,8 @@ const createStaff = catchAsync(async(req, res) => {
         data: result
     })
 })
+
+
+export const servicesController = {
+    createServicesController
+}

@@ -1,24 +1,20 @@
 import { hospitalServices } from "./Services.model";
 
 
-export const findAdminId = async () => {
-    const lastAdmin = await hospitalServices.findOne(
-        {
-            id: 1,
-            _id: 0,
-        },
-    )
+export const findServicesId = async () => {
+    const lastAdmin = await hospitalServices.findOne({})
         .sort({
             createdAt: -1,
         })
         .lean();
+    console.log(lastAdmin);
 
     return lastAdmin?.id ? lastAdmin.id.substring(2) : undefined;
 };
 
-export const generateAdminId = async () => {
+export const generateServicesId = async () => {
     let currentId = (0).toString();
-    const lastAdminId = await findAdminId();
+    const lastAdminId = await findServicesId();
 
     if (lastAdminId) {
         currentId = lastAdminId.substring(2);

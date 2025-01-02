@@ -1,12 +1,17 @@
 import mongoose from "mongoose"
 import { THospitalServices } from "./Services.interface"
 import { hospitalServices } from "./Services.model"
+import { generateServicesId } from "./services.utils"
 
 
 const createServicesIntoDB = async (payload: THospitalServices) => {
     const session = await mongoose.startSession()
     try {
         session.startTransaction()
+        const id = await generateServicesId()
+        console.log(id);
+
+        
 
        const result = await hospitalServices.create(payload)
         await session.commitTransaction()
