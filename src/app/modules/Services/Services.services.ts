@@ -32,7 +32,15 @@ const getSingleServicesFromDB = async (id: string) => {
 
     return allPatientData
 }
+const updatePatientFromDB = async (id: string, payload: Partial<THospitalServices>) => {
+    const result = await hospitalServices.findByIdAndUpdate(id, payload, {
+        new: true,
+        runValidators: true,
+    });
+    
+    return result;
+}
 
 export const services = {
-    createServicesIntoDB, getServicesFromDB, getSingleServicesFromDB
+    createServicesIntoDB, getServicesFromDB, getSingleServicesFromDB, updatePatientFromDB
 }

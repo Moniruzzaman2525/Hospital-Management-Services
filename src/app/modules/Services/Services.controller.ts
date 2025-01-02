@@ -34,8 +34,19 @@ const getSingleServicesController = catchAsync(async(req, res) => {
         data: result
     })
 })
+const updateSingleServicesController = catchAsync(async(req, res) => {
+    const id = req.params.id
+    const {services: servicesData} = req.body
+    const result = await services.updatePatientFromDB(id, servicesData)
+    sendResponse(res, {
+        statusCode: 201,
+        success: true,
+        message: 'Services update successfully',
+        data: result
+    })
+})
 
 
 export const servicesController = {
-    createServicesController, getServicesController, getSingleServicesController
+    createServicesController, getServicesController, getSingleServicesController, updateSingleServicesController
 }
