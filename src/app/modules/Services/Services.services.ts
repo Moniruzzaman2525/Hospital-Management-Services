@@ -26,7 +26,13 @@ const getServicesFromDB = async () => {
 
     return allPatientData
 }
+const getSingleServicesFromDB = async (id: string) => {
+
+    const allPatientData = await hospitalServices.findOne({id})
+
+    return allPatientData
+}
 
 export const services = {
-    createServicesIntoDB, getServicesFromDB
+    createServicesIntoDB, getServicesFromDB, getSingleServicesFromDB
 }

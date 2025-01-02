@@ -8,6 +8,6 @@ import { createServicesValidationSchema } from './services.validation'
 const router = express.Router()
 router.post('/create-services', validateRequest(createServicesValidationSchema), servicesController.createServicesController)
 router.get('/get-services', servicesController.getServicesController)
-router.get('/get-services/:id', servicesController.getServicesController)
+router.get('/get-services/:id', servicesController.getSingleServicesController)
 
 export const servicesRouter = router

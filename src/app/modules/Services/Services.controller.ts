@@ -24,8 +24,18 @@ const getServicesController = catchAsync(async(req, res) => {
         data: result
     })
 })
+const getSingleServicesController = catchAsync(async(req, res) => {
+    const id = req.params.id
+    const result = await services.getSingleServicesFromDB(id)
+    sendResponse(res, {
+        statusCode: 201,
+        success: true,
+        message: 'Services create successfully',
+        data: result
+    })
+})
 
 
 export const servicesController = {
-    createServicesController, getServicesController
+    createServicesController, getServicesController, getSingleServicesController
 }
