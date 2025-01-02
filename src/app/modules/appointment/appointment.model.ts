@@ -4,17 +4,16 @@ import { TAppointment } from "./appointment.interface";
 
 
 const appointmentSchema = new Schema<TAppointment>({
-    name: {
-        type: String,
-        required: [true, 'Name is required']
+    date: {
+        type: Date,
+        required: [true, "Appointment date is required"],
     },
-    user: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    },
-    description: {
+    time: {
         type: String,
-        required: [true, 'Description is required'],
+        required: [true, "Appointment time is required"],
+    },
+    reason: {
+        type: String,
     },
     cost: {
         type: String,
@@ -22,7 +21,8 @@ const appointmentSchema = new Schema<TAppointment>({
     },
     doctor: {
         type: Schema.ObjectId,
-        ref: 'Doctor'
+        ref: 'Doctor',
+        required: [true, "Doctor is required"],
     }
 })
 
