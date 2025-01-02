@@ -21,7 +21,12 @@ const createServicesIntoDB = async (payload: THospitalServices) => {
     }
 }
 
+const getServicesFromDB = async () => {
+    const allPatientData = await hospitalServices.find({})
+
+    return allPatientData
+}
 
 export const services = {
-    createServicesIntoDB
+    createServicesIntoDB, getServicesFromDB
 }
