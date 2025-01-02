@@ -46,6 +46,12 @@ const patientSchema = new Schema<TPatient>({
         enum: ['Male', 'Female'],
         required: [true, 'Gender is required'],
     },
+    hospitalServices: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Service", // Reference the Service model
+        },
+    ],
 })
 
 
