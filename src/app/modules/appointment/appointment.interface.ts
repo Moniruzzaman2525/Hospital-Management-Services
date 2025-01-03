@@ -7,5 +7,4 @@ export type TAppointment = {
     cost: string;
     doctor: Types.ObjectId;
     patient: Types.ObjectId;
-    user: Types.ObjectId;
 }

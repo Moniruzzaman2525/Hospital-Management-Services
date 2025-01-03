@@ -14,5 +14,5 @@ export type TPatient = {
     contactInfo: TContactInfo;
     medicalHistory: TMedicalHistory;
     hospitalServices?: Types.ObjectId[];
-    bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
+    bloodGroup: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
 }

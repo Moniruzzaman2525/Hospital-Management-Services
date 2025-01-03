@@ -4,7 +4,7 @@ import { staffRouter } from "../modules/staff/staff.routes";
 import { patientRouter } from "../modules/patient/patient.routes";
 import { doctorRouter } from "../modules/doctor/doctor.routes";
 import { adminRouter } from "../modules/admin/admin.routes";
-import { servicesRouter } from "../modules/Services/Services.routes";
+import { servicesRouter } from "../modules/Services/services.routes";
 import { appointmentRoute } from "../modules/appointment/appointment.routes";
 
 

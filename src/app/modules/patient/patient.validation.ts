@@ -16,7 +16,7 @@ export const createPatientValidationSchema = z.object({
             image: z.string().optional(),
             contactInfo: contactInfoValidation,
             medicalHistory: medicalHistoryValidation,
-            bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']).optional()
+            bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'])
         })
     })
 })
@@ -31,7 +31,7 @@ export const updatePatientValidationSchema = z.object({
             image: z.string().optional(),
             contactInfo: contactInfoValidation.optional(),
             medicalHistory: medicalHistoryValidation.optional(),
-            bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']).optional()
+            bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'])
         })
     })
 })
