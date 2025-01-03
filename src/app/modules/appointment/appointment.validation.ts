@@ -6,10 +6,9 @@ export const bookAppointmentValidationSchema = z.object({
             id: z.string().optional(),
             time: z.string(),
             reason: z.string(),
-            const: z.string(),
+            cost: z.string(),
             doctor: z.string(),
             patient: z.string(),
-            specialization: z.string(),
         })
     })
 })
