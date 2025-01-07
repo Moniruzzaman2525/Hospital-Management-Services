@@ -6,13 +6,10 @@ import { generateAppointmentId } from "./appointment.utils"
 
 
 const bookAppointmentServices = async (payload: TAppointment) => {
-
-
-
     const appointmentId = await generateAppointmentId()
     const isDoctorExist = await Doctor.findOne({ id: payload.id })
     if (!isDoctorExist) {
-        throw new AppError(404, 'Doctor not found')
+        throw new AppError(404, 'Doctor not found 😥')
     }
     payload.id = appointmentId
     const result = await Appointment.create(payload)
